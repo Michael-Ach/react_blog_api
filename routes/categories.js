@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", async (_req, res) => {
     try {
       const cats = await Category.find();
       return res.status(200).json(cats);
