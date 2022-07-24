@@ -28,10 +28,10 @@ app.use("/images", express.static(path.join(__dirname, "/images")));
 
 
 const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
+	destination: (_req, _file, cb) => {
 	  cb(null, "images");
 	},
-	filename: (req, file, cb) => {
+	filename: (req, _file, cb) => {
 		cb(null, req.body.name)
 		// When using postman for testing, you the code below, since we can't use both formdata and raw
 		// cb(null, "img.jpeg");
@@ -39,7 +39,7 @@ const storage = multer.diskStorage({
   });
   
 const upload = multer({ storage: storage });
-app.post("/api/upload", upload.single("file"), (req, res) => {
+app.post("/api/upload", upload.single("file"), (_req, res) => {
 	res.status(200).json("File has been uploaded");
 });
 
