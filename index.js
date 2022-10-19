@@ -49,6 +49,13 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 
+app.use("/", (req, res, next) => {
+	res.json({ 
+	  msg: "Welcome, API endpoints are ready",
+	});
+	next();
+  });
+
 
 app.listen(process.env.PORT, ()=>{
 	console.log(`Listening on port ${process.env.PORT}`)
